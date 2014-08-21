@@ -1,4 +1,4 @@
-require './lib/number'
+require 'number.rb'
 class Contact
   @@names = []
   @@contacts = {}

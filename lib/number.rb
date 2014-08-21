@@ -10,4 +10,11 @@ class Info
   end
 end
 
+class Number < Info
+end
 
+class Email < Info
+end
+
+class Mail < Info
+end
