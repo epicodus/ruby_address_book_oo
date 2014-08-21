@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 require './lib/number.rb'
+=======
+require './lib/number'
+>>>>>>> 1136d05d80a3b105868455413604fde7ee9d5113
 class Contact
   @@names = []
   @@contacts = {}

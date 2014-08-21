@@ -10,6 +10,7 @@ class Info
   end
 end
 
+<<<<<<< HEAD
 class Number < Info
 end
 
@@ -18,3 +19,6 @@ end
 
 class Mail < Info
 end
+=======
+
+>>>>>>> 1136d05d80a3b105868455413604fde7ee9d5113

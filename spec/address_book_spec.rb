@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 require 'contact.rb'
 require 'number.rb'
 
+=======
+>>>>>>> 1136d05d80a3b105868455413604fde7ee9d5113
 describe 'Contact' do
   before do
     Contact.clear
