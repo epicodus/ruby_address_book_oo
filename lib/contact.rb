@@ -1,6 +1,3 @@
-require './lib/number.rb'
-require './lib/number'
-
 class Contact
   attr_accesor(:name, :phone_numbers, :emails, :addresses)
   @@all_contacts = []
@@ -11,6 +8,24 @@ class Contact
 
   def Contact.clear
     @@all_contacts = []
+  end
+
+  def Contact.list_contacts
+    current_lst = ""
+    @@all_contacts.each do |contact|
+      current_lst += "#{contact.name}\n"
+    end
+    current_lst
+  end
+
+  def Contact.contact_earch(contact_name)
+    current_contact = Object.new
+    @@all)contacts.each do |contact|
+      if contact.name == contact_name
+        current_contact = contact
+      end
+    end
+    current_contact
   end
 
   def initialize (name)
