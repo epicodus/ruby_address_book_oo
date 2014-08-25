@@ -10,27 +10,24 @@ class Contact
   end
 
   def Contact.clear
-    @@names = []
-    @@contacts = {}
-  end
-
-  def Contact.all
-    @@contacts
+    @@all_contacts = []
   end
 
   def initialize (name)
     @name = name
-    @@names << @name
-    @@contacts[name] = self
+    @phone_numbers = []
+    @emails = []
+    @addresses = []
+    save
   end
 
-  def name
-    @name
+  def save
+    @@all_contact << self
   end
 
-  def add_number(number)
-    @number = number
-  end
+  def save_phone(phone)
+    @phone_numbers << phone
+  end  
 
   def add_numbers(extra)
     @add_numbers = Number.new(extra)
