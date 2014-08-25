@@ -22,7 +22,7 @@ class Contact
   end
 
   def save
-    @@all_contact << self
+    @@all_contacts << self
   end
 
   def save_phone(phone)
@@ -33,40 +33,68 @@ class Contact
     current_lst = ""
     @phone_numbers.each do |number|
       current_lst += "#{number.phone_number}\n"
+    end
+    current_lst
   end
 
   def save_emails(email)
     @emails << email
   end
 
-  def add_addresses(addresses)
-    @addresses = Mail.new(addresses)
+  def list_email
+    current_lst = ""
+    @emails.each do |mail|
+      current_lst += "#{mail.email}\n"
+    end
+    current_lst
   end
 
-  def addresses
-    @addresses.all
+  def save_address(address)
+    @addresses << address
   end
 
-  def number
-    @number
+  def list_address
+    current_lst = ""
+    @addresses.each do |address|
+      current_lst += "#{address.address}"
+    end
+    current_lst
   end
 
-  def add_email(email)
-    @email = email
+  def edit_name(new_name)
+    @name = new_name
   end
 
-  def email
-    @email
-  end
-
-  def add_mailing(address)
-    @address = address
-  end
-
-  def mailing
-    @address
+  def contact_delete
+    @@all_contacts.delete(self)
   end
 end
 
+class Phone
+  attr_accessor(:phone_number)
+  
+  def initialize(number)
+    @phone_number = number
+  end
+end
 
+class Email
+  attr_accessor(:email)
+  
+  def initialize(email)
+    @email = email
+  end
+end
+
+class Address
+  attr_accessor(:street, :city, :zip, :address)
+  
+  def initialize(street, city, state, zip)
+    @street = street
+    @city = city
+    @state = state
+    @zip = zip
+    @address = "#{street} #{city} #{state} #{zip}"
+  end
+end
 
