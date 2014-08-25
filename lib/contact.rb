@@ -29,20 +29,14 @@ class Contact
     @phone_numbers << phone
   end  
 
-  def add_numbers(extra)
-    @add_numbers = Number.new(extra)
+  def list_phone
+    current_lst = ""
+    @phone_numbers.each do |number|
+      current_lst += "#{number.phone_number}\n"
   end
 
-  def numbers
-    @add_numbers.all
-  end
-
-  def add_emails(emails)
-    @emails = Email.new(emails)
-  end
-
-  def emails
-    @emails.all
+  def save_emails(email)
+    @emails << email
   end
 
   def add_addresses(addresses)
