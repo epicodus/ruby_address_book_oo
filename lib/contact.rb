@@ -2,10 +2,11 @@ require './lib/number.rb'
 require './lib/number'
 
 class Contact
-  @@names = []
-  @@contacts = {}
-  def Contact.names
-    @@names
+  attr_accesor(:name, :phone_numbers, :emails, :addresses)
+  @@all_contacts = []
+
+  def Contact.all
+    @@all_contacts
   end
 
   def Contact.clear
