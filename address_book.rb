@@ -87,6 +87,15 @@ def phone_menu
   puts "Press 'a' to add phone number"
   puts "Press 'l' to list phone numbers"
   puts "Press 'e' to return to edit menu"
+  phone_choice = gets.chomp
+
+  case phone_choice
+  when 'a'
+
+  when 'l'
+    puts "Here is a list of phone numbers:"
+  when 'e'
+    edit_menu
 end
 menu
 
