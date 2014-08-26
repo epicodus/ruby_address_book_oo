@@ -1,5 +1,5 @@
 class Contact
-  @@all_contacts = []
+  @@contacts = []
 
   def initialize (name)
     @name = name
@@ -9,15 +9,15 @@ class Contact
   end
 
   def Contact.all
-    @@all_contacts
+    @@contacts
   end
 
   def Contact.clear
-    @@all_contacts = []
+    @@contacts = []
   end
 
   def save
-    @@all_contacts << self
+    @@contacts << self
   end
 
   def name
