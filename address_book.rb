@@ -3,11 +3,11 @@ require './lib/contact.rb'
 @current_contact
 
 def menu
-  puts 'Press 'q' to add a new contact.'
-  puts 'Press 'w' to show contacts.'
-  puts 'Press 'e' to delete a contact.'
-  puts 'Press 'r' to edit a contact.'
-  puts 'Press 't' to exit program'
+  puts "Press 'q' to add a new contact."
+  puts "Press 'w' to show contacts."
+  puts "Press 'e' to delete a contact."
+  puts "Press 'r' to edit a contact."
+  puts "Press 't' to exit program."
 
   main_choice = gets.chomp
 
@@ -16,6 +16,11 @@ def menu
     puts 'What is the name of the contact?'
     new_name = gets.chomp
     Contact.new(new_name)
+    puts "the contact '#{contact_name}' has been added.\n"
+    menu
+  when 'w'
+    list_contacts
+    menu 
   puts "What are the phone numbers for #{new_name} ?"
   new_phone = gets.chomp.split(",")
   puts "What is the email address of #{new_name}?"
