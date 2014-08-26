@@ -1,11 +1,9 @@
 class Address
-  attr_accessor(:street, :city, :zip, :address)
+  def initialize(new_address)
+    @address = new_address
+  end
 
-  def initialize(street, city, state, zip)
-    @street = street
-    @city = city
-    @state = state
-    @zip = zip
-    @address = "#{street} #{city} #{state} #{zip}"
+  def address
+    @address
   end
 end
