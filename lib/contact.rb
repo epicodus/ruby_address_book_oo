@@ -12,11 +12,11 @@ class Contact
     @addresses = []
   end
 
-  def Contact.all
+  def self.all
     @@contacts
   end
 
-  def Contact.clear
+  def self.clear
     @@contacts = []
   end
 
@@ -24,55 +24,25 @@ class Contact
     @@contacts << self
   end
 
+  def delete
+    @@contacts.delete(self)
+  end
+
+  def ==(contact2)
+    contact2 == nil ? false : (name == contact2.name && emails == contact2.emails && addresses == contact2.addresses && phones == contact2.phones)
+  end
   def name
     @name
   end
 
-  def emails
-    @emails
-  end
-
-  def phones
-    @phones
-  end
-
-  def addresses
-    @addresses
-  end
-
   def list_email
-    current_lst = ""
-    @emails.each do |mail|
-      if current_lst == ""
-        current_lst += "|" + mail.email + "|"
-      else
-        current_lst += mail.email + "|"
-      end
-    end
-    current_lst
+    emails.collect {|email| email.eaddress}
   end
 
   def list_phone
-    current_lst = ""
-    @phones.each do |number|
-      if current_lst == ""
-        current_lst += "|" + number.phone + "|"
-      else
-        current_lst += number.phone + "|"
-      end
-    end
-    current_lst
+    phones.collect {|phone| phone.display}
   end
 
   def list_address
-    current_lst = ""
-    @addresses.each do |addr|
-      if current_lst == ""
-        current_lst += "|" + addr.address + "|"
-      else
-        current_lst += addr.address + "|"
-      end
-    end
-    result
-  end
+    addresses.collect {|address| address.display}
 end
