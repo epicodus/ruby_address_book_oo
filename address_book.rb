@@ -1,46 +1,49 @@
 require './lib/contact.rb'
+require './lib/address.rb'
+require './lib/email.rb'
+require './lib/phone.rb'
 
-@current_contact
 
 def menu
-  puts "Press 'q' to add a new contact."
-  puts "Press 'w' to show contacts."
-  puts "Press 'e' to delete a contact."
-  puts "Press 'r' to edit a contact."
-  puts "Press 't' to exit program."
-
-  main_choice = gets.chomp
-
-  case main_choice
-    when 'q'
-      puts 'What is the name of the contact?'
-      contact_name = gets.chomp
-      Contact.new(contact_name)
-      puts "the contact '#{contact_name}' has been added.\n"
-      menu
-    when 'w'
-      list_contacts
-      menu
-    when 'e'
-      list_contacts
-      puts "Type the Name of contact you would like deleted:"
-      contact_name = gets.chomp
-      @current_contact = Contact.contact_search(contact_name)
-      @current_contact.contact_delete
-      puts "the contact '#{contact_name} has been deleted."
-      menu
-    when 'r'
-      puts 'Type the name of the contact you wish to edit:'
-      contact_name = gets.chomp
-      @current_contact = Contact.contact_search(contact_name)
-      edit_menu
-    when 't'
-      puts 'Good Bye'
-      exit
-    else
-      puts 'Not available. Pick Again!'
-      menu
+  loop do
+    puts "Press '1' to create contact."
+    puts "Press '2' to show or edit contacts."
+    puts "Press '4' to delete a contact."
+    puts "Press '0' to exit program."
+    main_choice = gets.chomp
+    exit if main_choice = 'q'
+    menu_selector(main_choice)
   end
+end
+
+def menu_selector(choice)
+  if choice == '1'
+    puts 'What is the name of the contact?'
+    name = gets.chomp
+    new_contact = Contact.new(name)
+    new_contact.save
+  elsif choice == '2'
+    puts "Here are all the available contacts: "
+      if Contact.all.length == 0
+        puts "Sorry, but you have no contacts"
+        return
+      end
+    "#{index + 1}. #{contact.name} \n Phone: #{contact.list_phone} Email: #{contact.list_email} Address: #{contact.list_address}"
+      modify_choice = gets.chomp.to_i
+      unless   modify_choice == 'm'
+        contact_edit(modify_choice)
+      when 'r'
+        puts 'Type the name of the contact you wish to edit:'
+        contact_name = gets.chomp
+        @current_contact = Contact.contact_search(contact_name)
+        edit_menu
+      when 't'
+        puts 'Good Bye'
+        exit
+      else
+        puts 'Not available. Pick Again!'
+        menu
+    end
 end
 
 def list_contacts

@@ -1,7 +1,9 @@
 class Phone
-  attr_accessor(:phone_number)
+  def initialize(new_number)
+    @phone = new_number
+  end
 
-  def initialize(number)
-    @phone_number = number
+  def phone
+    @phone
   end
 end
