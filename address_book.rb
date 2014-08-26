@@ -32,14 +32,16 @@ def menu_selector(choice)
       modify_choice = gets.chomp.to_i
       unless   modify_choice == 'm'
         contact_edit(modify_choice)
-      when 'r'
-        puts 'Type the name of the contact you wish to edit:'
-        contact_name = gets.chomp
-        @current_contact = Contact.contact_search(contact_name)
-        edit_menu
-      when 't'
-        puts 'Good Bye'
-        exit
+      end
+    end
+  elsif input === '3'
+    puts "Existing Contacts:"
+    Contact.all.each_with_index { |contact, index| puts "#{index + 1}. #{contact.name}" }
+    puts "\nContact to delete?"
+    deleted_contact = gets.chomp.to_i
+    Contact.all.delete_at(deleted_contact-1)
+  end
+  end
       else
         puts 'Not available. Pick Again!'
         menu
