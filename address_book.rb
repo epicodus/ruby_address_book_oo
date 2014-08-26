@@ -102,6 +102,29 @@ def contact_editor(input)
     end
   end
 end
+
+def add_address(contact)
+  puts "Add Mailing Address for #{contact.name}"
+
+  street_address = prompt("#{contact.name}'s street address (blank to cancel)")
+  return if street_address == ""
+
+  city = prompt("#{contact.name}'s city")
+  state = prompt("#{contact.name}'s state")
+  zip_code = prompt("#{contact.name}'s zip code")
+
+  address = Address.new(street_address, city, state, zip_code)
+
+  unless prompt?("#{address.display} <-- is this correct")
+    add_addresses(contact)
+    return
+  end
+
+  contact.addresses << address
+
+  add_addresses(contact) if prompt?("Add another address for #{contact.name}")
+end
+
 def list_contacts
   index = 0
   "#{index + 1}. #{Contact.name} \n Phone: #{@current_contact.list_phone} Email: #{Contact.email_list} Address: #{Contact.address_list}"
