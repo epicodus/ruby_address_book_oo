@@ -48,6 +48,41 @@ def list_contacts
   puts Contact.list_contacts
   puts "\n"
 end
+
+def edit_menu
+  puts "Press 'y' to edit name"
+  puts "Press 'u' to edit phone"
+  puts "Press 'i' to edit email"
+  puts "Press 'o' to edit address"
+  puts "Press 'p' to exit program"
+  puts "Press 'm' to go to the main menu"
+
+  case edit_choice
+    when 'n'
+      puts "The current contact name is #{@current_contact.name}"
+      puts "Please enter new name"
+      new_name = gets.chomp
+      @current_contact.edit_name(new_name)
+      puts "Name changed to #{@current_contact.name}"
+      edit_choice
+    when 'p'
+      phone_menu
+    when 'e'
+      email_menu
+    when 'a'
+      address_menu
+    when 'm'
+      main_menu
+    when 'x'
+      puts "So long."
+      exit
+    else
+      puts "That's not an option!"
+      edit_menu
+  end
+end
+
+
 menu
 
 
