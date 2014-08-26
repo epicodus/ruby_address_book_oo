@@ -3,7 +3,7 @@ class Contact
 
   def initialize (name)
     @name = name
-    @phone_numbers = []
+    @phones = []
     @emails = []
     @addresses = []
   end
@@ -16,6 +16,33 @@ class Contact
     @@all_contacts = []
   end
 
+  def save
+    @@all_contacts << self
+  end
+
+  def name
+    @name
+  end
+
+  def emails
+    @emails
+  end
+
+  def phones
+    @phones
+  end
+
+  def addresses
+    @addresses
+  end
+
+  def list_email
+    current_lst = ""
+    @emails.each do |mail|
+      current_lst += "#{mail.email}\n"
+    end
+    current_lst
+  end
   def Contact.list_contacts
     current_lst = ""
     @@all_contacts.each do |contact|
@@ -34,9 +61,7 @@ class Contact
     current_contact
   end
 
-  def save
-    @@all_contacts << self
-  end
+
 
   def save_phone(phone)
     @phone_numbers << phone
@@ -45,7 +70,7 @@ class Contact
   def list_phone
     current_lst = ""
     @phone_numbers.each do |number|
-      current_lst += "#{number.phone_number}\n"
+      current_lst += "#{phone.phone_number}\n"
     end
     current_lst
   end
@@ -54,13 +79,7 @@ class Contact
     @emails << email
   end
 
-  def list_email
-    current_lst = ""
-    @emails.each do |mail|
-      current_lst += "#{mail.email}\n"
-    end
-    current_lst
-  end
+
 
   def save_address(address)
     @addresses << address
