@@ -1,6 +1,12 @@
 class Contact
-  attr_accessor(:name, :phone_numbers, :emails, :addresses)
   @@all_contacts = []
+
+  def initialize (name)
+    @name = name
+    @phone_numbers = []
+    @emails = []
+    @addresses = []
+  end
 
   def Contact.all
     @@all_contacts
@@ -26,14 +32,6 @@ class Contact
       end
     end
     current_contact
-  end
-
-  def initialize (name)
-    @name = name
-    @phone_numbers = []
-    @emails = []
-    @addresses = []
-    save
   end
 
   def save
@@ -85,13 +83,7 @@ class Contact
   end
 end
 
-class Phone
-  attr_accessor(:phone_number)
 
-  def initialize(number)
-    @phone_number = number
-  end
-end
 
 class Email
   attr_accessor(:email)
