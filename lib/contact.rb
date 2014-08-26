@@ -1,4 +1,8 @@
 class Contact
+  attr_reader :name
+
+  attr_accessor :emails, :addresses, :phones
+
   @@contacts = []
 
   def initialize (name)

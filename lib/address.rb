@@ -8,7 +8,11 @@ class Address
     @zipcode = zipcode
   end
 
-  def address
-    @address
+  def ==(addres)
+    (addres.address == address && addres.city == city && addres.state == state && addres.zipcode == zipcode)
+  end
+
+  def show
+    "#{address}, #{city}, #{state}, #{zipcode}"
   end
 end
