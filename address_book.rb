@@ -14,8 +14,8 @@ def menu
   case main_choice
     when 'q'
       puts 'What is the name of the contact?'
-      new_name = gets.chomp
-      Contact.new(new_name)
+      contact_name = gets.chomp
+      Contact.new(contact_name)
       puts "the contact '#{contact_name}' has been added.\n"
       menu
     when 'w'
@@ -56,7 +56,7 @@ def edit_menu
   puts "Press 'o' to edit address"
   puts "Press 'p' to exit program"
   puts "Press 'm' to go to the main menu"
-
+  edit_choice = gets.chomp
   case edit_choice
     when 'n'
       puts "The current contact name is #{@current_contact.name}"
@@ -82,7 +82,12 @@ def edit_menu
   end
 end
 
-
+def phone_menu
+  puts "#{The current contact name is @current_contact.name}"
+  puts "Press 'a' to add phone number"
+  puts "Press 'l' to list phone numbers"
+  puts "Press 'e' to return to edit menu"
+end
 menu
 
 
