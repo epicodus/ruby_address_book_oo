@@ -40,8 +40,16 @@ def menu
     else
       puts 'Not available. Pick Again!'
       menu
-  end  
+  end
 end
+
+def list_contacts
+  puts "Here is a list of Contacts\n"
+  puts Contact.list_contacts
+  puts "\n"
+end
+menu
+
 
 
 

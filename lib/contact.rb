@@ -1,5 +1,5 @@
 class Contact
-  attr_accesor(:name, :phone_numbers, :emails, :addresses)
+  attr_accessor(:name, :phone_numbers, :emails, :addresses)
   @@all_contacts = []
 
   def Contact.all
@@ -20,7 +20,7 @@ class Contact
 
   def Contact.contact_search(contact_name)
     current_contact = Object.new
-    @@all)contacts.each do |contact|
+    @@all_contacts.each do |contact|
       if contact.name == contact_name
         current_contact = contact
       end
@@ -42,7 +42,7 @@ class Contact
 
   def save_phone(phone)
     @phone_numbers << phone
-  end  
+  end
 
   def list_phone
     current_lst = ""
@@ -87,7 +87,7 @@ end
 
 class Phone
   attr_accessor(:phone_number)
-  
+
   def initialize(number)
     @phone_number = number
   end
@@ -95,7 +95,7 @@ end
 
 class Email
   attr_accessor(:email)
-  
+
   def initialize(email)
     @email = email
   end
@@ -103,7 +103,7 @@ end
 
 class Address
   attr_accessor(:street, :city, :zip, :address)
-  
+
   def initialize(street, city, state, zip)
     @street = street
     @city = city
