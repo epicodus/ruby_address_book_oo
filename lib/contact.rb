@@ -18,7 +18,7 @@ class Contact
     current_lst
   end
 
-  def Contact.contact_earch(contact_name)
+  def Contact.contact_search(contact_name)
     current_contact = Object.new
     @@all)contacts.each do |contact|
       if contact.name == contact_name
