@@ -1,7 +1,9 @@
 class Email
-  attr_accessor(:email)
+  def initialize(new_email)
+    @email = new_email
+  end
 
-  def initialize(email)
-    @email = email
+  def email
+    @email
   end
 end
