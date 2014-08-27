@@ -31,9 +31,7 @@ class Contact
   def ==(contact2)
     contact2 == nil ? false : (name == contact2.name && emails == contact2.emails && addresses == contact2.addresses && phones == contact2.phones)
   end
-  def name
-    @name
-  end
+
 
   def list_email
     emails.collect {|email| email.eaddress}
@@ -45,4 +43,5 @@ class Contact
 
   def list_address
     addresses.collect {|address| address.display}
+  end
 end
