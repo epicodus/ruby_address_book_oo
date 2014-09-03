@@ -1,11 +1,24 @@
 class Email
-  attr_accessor :eaddress
+  @@all_emails = []
 
-  def initialize(new_email)
-    @email = new_email
+  def Email.all
+    @@all_emails
   end
 
-  def ==(email)
-    email.eaddress == eaddress
+  def initialize(email)
+    @email = email
   end
+
+  def email
+    @email
+  end
+
+  def save
+    @@all_emails << self
+  end
+
+  def update_email(email)
+    @email = email
+  end
+
 end
