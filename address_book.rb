@@ -5,17 +5,6 @@ require './lib/phone.rb'
 
 @current_contact
 
-# def menu
-#   loop do
-#     puts "Press '1' to create contact."
-#     puts "Press '2' to show or edit contacts."
-#     puts "Press '4' to delete a contact."
-#     puts "Press '0' to exit program."
-#     main_choice = gets.chomp
-#     exit if main_choice == '0'
-#     menu_selector(main_choice)
-#   end
-# end
 
 def prompt(message)
   print "#{message} => "
@@ -23,14 +12,14 @@ def prompt(message)
 end
 
 def prompt?(question)
-  prompt(question + "(Y/N)?").upcase == "Y"
+  prompt(question + "?").upcase == "Y"
 end
 
 
 def add_addresses(contact)
   puts "Add Mailing Address for #{contact.name}"
 
-  street_address = prompt("#{contact.name}'s street address (blank to cancel)")
+  street_address = prompt("#{contact.name}'s street address")
   return if street_address == ""
 
   city = prompt("#{contact.name}'s city")
@@ -108,9 +97,9 @@ def create_new_contact
   end
 
   contact = Contact.new(contact_name)
-  add_addresses(contact) if prompt("Enter mailing address(es)")
-  add_phone_numbers(contact) if prompt("Enter phone number(s)")
-  add_email_addresses(contact) if prompt("Enter email address(es)")
+  add_addresses(contact) if prompt("Enter mailing address(es)?")
+  add_phone_numbers(contact) if prompt("Enter phone number(s)?")
+  add_email_addresses(contact) if prompt("Enter email address(es)?")
   contact.save
 
   return contact
@@ -279,14 +268,14 @@ def menu_loop
         current_contact.addresses.delete(address_to_remove)
         next
       else
-        prompt("Misunderstood. Enter to continue")
+        prompt("Not understood.")
         next
       end
     else
-      prompt("Misunderstood. Enter to continue")
+      prompt("Not understood.")
       next
-    end # case user_cmd[0]
-  end # while loop
+    end
+  end
 end
 
 menu_loop

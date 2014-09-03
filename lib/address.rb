@@ -1,18 +1,39 @@
 class Address
-  attr_accessor :address, :city, :state, :zipcode
 
-  def initialize(address, city, state, zipcode)
-    @address = address
+  @@all_addresses = []
+
+  def Address.all
+    @@all_addresses
+  end
+
+  def initialize(street, city, state, zipcode)
+    @street = street
     @city = city
     @state = state
-    @zipcode = zipcode
+    @zip = zip
   end
 
-  def ==(addres)
-    (addres.address == address && addres.city == city && addres.state == state && addres.zipcode == zipcode)
+  def street
+    @street
   end
 
-  def show
-    "#{address}, #{city}, #{state}, #{zipcode}"
+  def city
+    @city
+  end
+
+  def zip
+    @zip
+  end
+
+  def save
+    @@all_addresses << self
+  end
+
+  def full_address
+    @street + ", " + @city + ", " + @zip
+  end
+
+  def remove_address(address)
+    @addresses.delete(address)
   end
 end
