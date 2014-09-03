@@ -1,47 +1,53 @@
 class Contact
-  attr_reader :name
+  @@all_contacts = []
 
-  attr_accessor :emails, :addresses, :phones
+  def Person.all
+    @@all_contacts
+  end
 
-  @@contacts = []
-
-  def initialize (name)
-    @name = name
-    @phones = []
-    @emails = []
+  def initialize(first_name, last_name)
+    @first_name = first_name
+    @last_name = last_name
     @addresses = []
+    @emails = []
+    @phone_numbers = []
+
   end
 
-  def self.all
-    @@contacts
+  def first_name
+    @first_name
   end
 
-  def self.clear
-    @@contacts = []
+  def last_name
+    @last_name
+  end
+
+  def addresses
+    @addresses
+  end
+
+  def emails
+    @emails
+  end
+
+  def phone_numbers
+    @phone_numbers
   end
 
   def save
-    @@contacts << self
+    @@all_contacts << self
   end
 
-  def delete
-    @@contacts.delete(self)
+  def push_address(new_address)
+    @addresses << new_address
   end
 
-  def ==(contact2)
-    contact2 == nil ? false : (name == contact2.name && emails == contact2.emails && addresses == contact2.addresses && phones == contact2.phones)
+  def push_email(email)
+    @emails << email
   end
 
-
-  def list_email
-    emails.collect {|email| email.eaddress}
+  def push_phone(new_phone)
+    @phone_numbers << new_phone
   end
 
-  def list_phone
-    phones.collect {|phone| phone.display}
-  end
-
-  def list_address
-    addresses.collect {|address| address.display}
-  end
 end
