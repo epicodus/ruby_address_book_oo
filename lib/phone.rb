@@ -1,16 +1,24 @@
 class Phone
-  attr_accessor :phone_number, :code
 
-  def initialize(code, phone_number)
+  @@all_phones = []
+
+  def Phone.all
+    @@all_phones
+  end
+
+  def initialize(phone_number)
     @phone_number = phone_number
-    @code = code
   end
 
-  def ==(phone)
-    (phone.code == code && phone.phone_number == number)
+  def phone_number
+    @phone_number
   end
 
-  def show
-    "(#{area_code})#{number}"
+  def save
+    @@all_phones << self
+  end
+
+  def update_phone(phone)
+    @phone_number = phone
   end
 end
