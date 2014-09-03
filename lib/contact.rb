@@ -1,7 +1,7 @@
 class Contact
   @@all_contacts = []
 
-  def Person.all
+  def Contact.all
     @@all_contacts
   end
 
